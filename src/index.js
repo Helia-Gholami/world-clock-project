@@ -24,19 +24,24 @@ function updateCity(event) {
   let cityTime = moment().tz(cityTimeZone);
   let cityName = cityTimeZone.replace("-", " ").split("/")[1];
   let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `
+  if (cityTimeZone === "") {
+    citiesElement.innerHTML = `
+    <div>
+    <h2>Please select a city🙏</h2>
+    </div>
+    `;
+  } else {
+    citiesElement.innerHTML = `
   <div class="city" >
   <div>
           <h2>${cityName}</h2>
           <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
         </div>
-        <div class="time">${cityTime.format(
-          "h:mm:ss [<small>]A[</small>]"
-        )}</div>
+        <div class="time">${cityTime.format("h:mm [<small>]A[</small>]")}</div>
       </div>
       </div>
-      <a herf="/">All cities</a>
   `;
+  }
 }
 
 setInterval(updateTime, 1000);
