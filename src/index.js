@@ -22,7 +22,7 @@ function updateCity(event) {
     cityTimeZone = moment.tz.guess();
   }
   let cityTime = moment().tz(cityTimeZone);
-  let cityName = cityTimeZone.replace("-", " ").split("/")[1];
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let citiesElement = document.querySelector("#cities");
   if (cityTimeZone === "") {
     citiesElement.innerHTML = `
